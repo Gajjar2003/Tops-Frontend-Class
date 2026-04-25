@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User-Form</title>
+</head>
+
+<body>
+    <h1 align="center">User-Information</h1>
+    <table align="center" border="2" cellspacing="10" cellpadding="10">
+        <th colspan="4">User-Infromation Form</th>
+        <tr>
+            <td>Name: </td>
+            <td><input type="text" name="name"></td>
+            <td>Email:</td>
+            <td><input type="email" name="email"></td>
+        </tr>
+        <tr>
+            <td>Age: </td>
+            <td><input type="number" name="age"></td>
+            <td>Phone:</td>
+            <td><input type="number" name="phone"></td>
+        </tr>
+
+        <tr>
+            <td>DOB: </td>
+            <td><input type="date" name="dob"></td>
+            <td>Gender:</td>
+            <td><input type="radio" name="gender" value="male"> Male
+                <input type="radio" name="gender" value="female"> Female
+            </td>
+        </tr>
+          <tr>
+            <td>Language:</td>
+            <td colspan="3">
+                <input type="checkbox" name="language" value="english"> English
+                <input type="checkbox" name="language" value="spanish"> Spanish
+                <input type="checkbox" name="language" value="french"> French
+            </td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td>
+                <textarea rows="4" cols="30"></textarea>
+            </td>
+            <td>City</td>
+            <td>
+                <select>
+                    <option value="">----Select City----</option>
+                    <option value="surat">Surat</option>
+                    <option value="ahmedabad">Vapi</option>
+                    <option value="mumbai">Daman</option>
+                    <option value="pune">Pune</option>
+                </select>
+            </td>
+        </tr>
+      
+
+        <tr >
+            <td colspan="5" align="center"> <button type="submit">Submit</button>
+            <button type="reset">Reset</button></td>
+           
+
+
+
+        </tr>
+    </table>
+</body>
+
+</html>
