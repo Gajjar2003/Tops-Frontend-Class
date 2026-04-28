@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo Elements</title>
+    <style>
+        #f1::first-letter{
+            color: seagreen;
+            font-size: 50px;
+        }
+
+        h1::after{
+            content: "☆";
+        }
+        h1::before{
+            content: "☆";
+        }
+
+        #f1::selection{
+            background-color: black;
+            color: white;
+        }
+        li::marker{
+            color: red;
+        }
+        li::selection{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pseudo Elements Example</h1>
+    <p id="f1">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod commodi pariatur explicabo, ipsa vero culpa animi illo quae ex earum molestiae nulla? Ipsum, excepturi ad vero quam corrupti obcaecati rem?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut sapiente neque cupiditate perferendis. Ex voluptas optio rem corrupti officiis provident quibusdam. Et incidunt similique eveniet expedita ex tempora beatae enim.
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem nisi quibusdam numquam, ea modi eaque, et soluta nostrum quo, quam at cupiditate veritatis sed debitis accusantium nemo voluptatibus quod non.
+    </p>
+    <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+        <li>item5</li>
+    </ul>
+</body>
+</html>
