@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position</title>
+    <style>
+        .st {
+            position: static;
+            height: 30px;
+            width: 100%;
+            border: 2px solid black;
+            top: 50px;
+            padding: 10px;
+        }
+
+        .cart {
+            position: relative;
+            width: 200px;
+            height: 120px;
+            background: linear-gradient(rgb(163, 241, 163), rgb(224, 224, 114));
+
+        }
+
+        .bag {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: red;
+            color: white;
+            padding: 5px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .icon {
+            position: absolute;
+            top: 1px;
+
+        }
+
+        .chat-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: green;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: black;
+            color: white;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>static Examples</h1>
+
+    <p class="st">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos eum modi alias praesentium ab eius veniam velit
+        culpa necessitatibus omnis in, amet ut ratione, officia perspiciatis doloribus at est? Adipisci.
+    </p>
+
+    <h2>relative Examples</h2>
+    <div class="cart">
+        <span class="bag">New</span>
+        Products
+    </div>
+
+    <h1>Absolute Examples</h1>
+
+    <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <span class="icon">🔍</span>
+    </div>
+
+    <h1>Fixed Examples</h1>
+    <div class="chat-btn">💬</div>
+
+    <div class="navbar">Navbar</div>
+    <div style="height: 1000px;">Scroll content</div>
+
+</body>
+
+</html>
