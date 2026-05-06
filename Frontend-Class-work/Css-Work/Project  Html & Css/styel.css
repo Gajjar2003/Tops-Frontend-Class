@@ -3,6 +3,7 @@
     padding: 0px;
     box-sizing: border-box;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
    
     
 }
@@ -23,7 +24,7 @@ nav{
     height: 80px;
     padding: 0px 10px;
     display: flex;
-    background-color: rgb(95, 94, 94);
+    background-color:transparent;
     justify-content: space-between;
     align-items: center;
     position: fixed;
@@ -145,6 +146,43 @@ nav{
 }
 
 .about-col button:hover{
+    background-color: chartreuse;
+    color: black;
+}
+
+
+/* --------------------------------------services------------------------------------------ */
+
+.service{
+    margin: 50px 0px;
+    padding: 50px 100px;
+}
+
+.service-row{
+    margin-top: 50px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.cart{
+    text-align: center;
+    color: rgb(16, 16, 16);
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px 3px rgb(246, 163, 163);
+    padding: 20px;
+}
+
+.cart-text{
+    margin: 15px;
+}
+
+.btn1{
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1.2em;
+}
+.btn1:hover{
     background-color: chartreuse;
     color: black;
 }
