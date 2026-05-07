@@ -1,0 +1,34 @@
+@media screen and (max-width:800px) {
+    .main{
+        height: auto;
+    }
+    nav{
+        height: auto;
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        position: static;
+    }
+    .navbar{
+        flex-direction: column;
+    }
+    .about{
+        padding: 50px 30px;
+    }
+    .about-row{
+        grid-template-columns: 1fr;
+    }
+    .service{
+        padding: 50px 20px;
+
+    }
+    .service-row{
+        grid-template-columns: 1fr;
+    }
+
+    .footer{
+        flex-direction: column;
+        padding: 50px 30px;
+    }
+}
