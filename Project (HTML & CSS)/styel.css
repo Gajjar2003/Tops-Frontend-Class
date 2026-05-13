@@ -176,3 +176,62 @@ button:hover
    background-color: red;
    color:  white;
 }
+
+/* ------------------------------------------Footer--------------------------------------------- */
+
+footer
+{
+    background-color: rgb(183, 179, 179);
+    display: flex;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    background-color: rgb(254, 163, 163);
+      justify-content: center;  
+    align-items: center; 
+    
+}
+.footer-info
+{
+    padding: 10px 20px;
+    font-size: 1em;
+    
+ 
+}
+.footer-map iframe{
+    
+    border: 2px solid black;
+  border-radius: 20px;
+  height: 400px;
+  margin: 20px;
+  box-shadow: 3px 3px 3px 3px black;
+    
+}
+
+.footer-contact
+{
+    height: 400px;
+    width: 400px;
+    padding: 10px 20px;
+    border: 2px solid black;
+    box-shadow: 3px 3px 3px 3px black;
+    margin: 25px;
+    border-radius: 20px;
+
+}
+
+.footer-contact input, textarea{
+ width: 100%;
+    margin-top: 20px;
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+.footer-contact input, textarea{
+        width: 100%;
+    margin-top: 20px;
+    font-size: 20px;
+  
+}
