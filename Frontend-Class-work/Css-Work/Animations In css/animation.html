@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+
+    <style>
+        .box {
+            height: 200px;
+            width: 200px;
+            background-color: red;
+            display: inline-block;
+            transition: 1s;
+        }
+
+        #box-items1:hover {
+            transform: rotate(360deg);
+        }
+
+        #box-items2:hover {
+            transform: skew(20deg, 10deg);
+        }
+
+        #box-items3:hover {
+            transform: translateX(100px);
+        }
+
+        #box-items4:hover {
+            transform: translateY(100px);
+        }
+
+        #box-items5:hover {
+            transform: translate(100px, 100px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Animation In Css</h1>
+
+    <div class="box" id="box-items1"></div>
+    <div class="box" id="box-items2"></div>
+    <div class="box" id="box-items3"></div>
+    <div class="box" id="box-items4"></div>
+    <div class="box" id="box-items5"></div>
+
+</body>
+
+</html>
