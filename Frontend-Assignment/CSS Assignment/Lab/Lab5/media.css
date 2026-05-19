@@ -1,0 +1,49 @@
+
+        /* Responsive Design */
+        @media (max-width: 768px){
+
+            nav{
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+
+            nav ul{
+                flex-direction: column;
+                margin-top: 10px;
+            }
+
+            nav ul li{
+                margin: 10px 0;
+            }
+
+            .container{
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .column{
+                padding: 20px;
+            }
+
+            nav h1{
+                font-size: 24px;
+            }
+
+            nav ul li a{
+                font-size: 16px;
+            }
+
+            .column h2{
+                font-size: 22px;
+            }
+
+            .column p{
+                font-size: 16px;
+            }
+
+            footer{
+                font-size: 14px;
+                padding: 15px;
+            }
+        }
