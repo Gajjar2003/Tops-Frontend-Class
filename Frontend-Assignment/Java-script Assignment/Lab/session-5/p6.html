@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Like Button</title>
+</head>
+<body>
+
+<script>
+
+  function createLikeButton(label, color) {
+    let button = document.createElement("button");
+
+    button.textContent = label;
+    button.style.backgroundColor = color;
+    button.style.color = "white";
+    button.style.padding = "10px 20px";
+    button.style.border = "none";
+    button.style.borderRadius = "5px";
+    button.style.cursor = "pointer";
+    button.style.fontSize = "16px";
+
+    return button;
+  }
+
+
+  let likeButton = createLikeButton("❤️ Like", "red");
+  document.body.appendChild(likeButton);
+</script>
+
+</body>
+</html>

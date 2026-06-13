@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const formatFollowers = (count) => {
+            if (count >= 1000000) {
+                return (count / 1000000).toFixed(
+                    count % 1000000 === 0 ? 0 : 1
+                ) + "M";
+            } else if (count >= 1000) {
+                return (count / 1000).toFixed(
+                    count % 1000 === 0 ? 0 : 1
+                ) + "K";
+            }
+            return count.toString();
+        };
+
+     
+        console.log(formatFollowers(1500));     
+        console.log(formatFollowers(2000000));  
+        console.log(formatFollowers(12500));  
+        console.log(formatFollowers(500));    
+    </script>
+</body>
+
+</html>

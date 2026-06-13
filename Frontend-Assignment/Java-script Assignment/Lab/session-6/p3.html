@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spotify Playlist</title>
+</head>
+<body>
+
+    <h2>My Playlist</h2>
+
+    <input type="text" id="songInput" placeholder="Enter song name">
+    <button id="addSongBtn">Add Song</button>
+
+    <ul id="playlist"></ul>
+
+    <script>
+        let button = document.querySelector("#addSongBtn");
+
+        button.addEventListener("click", function () {
+            let songInput = document.querySelector("#songInput");
+            let playlist = document.querySelector("#playlist");
+
+            let songName = songInput.value;
+
+            if (songName.trim() !== "") {
+                let li = document.createElement("li");
+                li.textContent = songName;
+
+                playlist.appendChild(li);
+
+                songInput.value = ""; 
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dark Mode Toggle</title>
+</head>
+<body id="page">
+
+    <button id="toggleBtn">Dark Mode</button>
+
+    <script>
+        let button = document.getElementById("toggleBtn");
+        let isDarkMode = false;
+
+        button.addEventListener("click", function () {
+            if (!isDarkMode) {
+                document.body.style.backgroundColor = "black";
+                document.body.style.color = "white";
+                button.textContent = "Light Mode";
+                isDarkMode = true;
+            } else {
+                document.body.style.backgroundColor = "white";
+                document.body.style.color = "black";
+                button.textContent = "Dark Mode";
+                isDarkMode = false;
+            }
+        });
+    </script>
+
+</body>
+</html>
