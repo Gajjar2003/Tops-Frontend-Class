@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        class FlipkartProduct {
+            constructor(title, price, rating) {
+                this.title = title;
+                this.price = price;
+                this.rating = rating;
+            }
+
+
+            getDiscountedPrice(discountPercent) {
+                let discountedPrice = this.price - (this.price * discountPercent / 100);
+                return discountedPrice;
+            }
+        }
+
+
+        let product = new FlipkartProduct("Nike Shoes", 2000, 4.5);
+
+
+        console.log("Original Price:", product.price);
+        console.log("Discounted Price:", product.getDiscountedPrice(10));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flipkart Wishlist</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        #container {
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        .card {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            margin: 8px 0;
+            background: #f2f2f2;
+            border-radius: 6px;
+        }
+
+        button {
+            cursor: pointer;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .remove {
+            background: red;
+            color: white;
+        }
+
+        #addBtn {
+            background: green;
+            color: white;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Flipkart Wishlist</h2>
+
+    <button id="addBtn">Add Product</button>
+
+    <div id="container">
+
+        <div class="card">
+            <span>Phone</span>
+            <button class="remove">Remove</button>
+        </div>
+
+        <div class="card">
+            <span>Laptop</span>
+            <button class="remove">Remove</button>
+        </div>
+
+    </div>
+
+    <script>
+        const container = document.getElementById("container");
+        const addBtn = document.getElementById("addBtn");
+
+
+        addBtn.addEventListener("click", function () {
+            const productNames = ["Shoes", "Watch", "Bag", "Headphones"];
+
+            const randomProduct = productNames[
+                Math.floor(Math.random() * productNames.length)
+            ];
+
+            const card = document.createElement("div");
+            card.classList.add("card");
+
+            card.innerHTML = `
+        <span>${randomProduct}</span>
+        <button class="remove">Remove</button>
+    `;
+
+            container.appendChild(card);
+        });
+
+
+        container.addEventListener("click", function (event) {
+            if (event.target.classList.contains("remove")) {
+                const card = event.target.parentElement;
+                card.remove();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

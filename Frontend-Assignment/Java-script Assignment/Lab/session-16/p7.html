@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let videos = [
+            { title: "Intro to JS", views: 500000 },
+            { title: "React Tutorial", views: 750000 },
+            { title: "Node.js Crash Course", views: 1200000 },
+            { title: "Advanced JS Concepts", views: 2000000 }
+        ];
+
+
+        let viralVideo = videos.find(video => video.views > 1000000);
+
+
+        console.log("First viral video:", viralVideo);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let recentSearches = [];
+
+
+        function saveRecentSearch(query) {
+
+            recentSearches.push(query);
+
+
+            let searchesJSON = JSON.stringify(recentSearches);
+
+
+            localStorage.setItem("recentSearches", searchesJSON);
+
+            console.log("Saved:", searchesJSON);
+        }
+
+        saveRecentSearch("Biryani");
+        saveRecentSearch("Sneakers");
+    </script>
+</body>
+
+</html>

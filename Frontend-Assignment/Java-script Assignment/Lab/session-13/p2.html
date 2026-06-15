@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function validateUsername(username) {
+            let regex = /^[a-zA-Z0-9]+$/;
+
+            if (!regex.test(username)) {
+                throw new Error("Invalid Username");
+            }
+
+            return "Valid Username";
+        }
+
+      
+        try {
+            console.log(validateUsername("John123"));
+            console.log(validateUsername("John@123"));
+        } catch (error) {
+            console.error(error.message);
+        }
+    </script>
+</body>
+
+</html>

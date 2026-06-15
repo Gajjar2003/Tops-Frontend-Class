@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .movie-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>My Favorite Movies</h2>
+
+    <div class="movie-card">
+        <span>Inception</span>
+        <button class="remove-btn">Remove</button>
+    </div>
+
+    <div class="movie-card">
+        <span>Interstellar</span>
+        <button class="remove-btn">Remove</button>
+    </div>
+
+    <div class="movie-card">
+        <span>The Dark Knight</span>
+        <button class="remove-btn">Remove</button>
+    </div>
+
+    <script>
+        let removeButtons = document.querySelectorAll(".remove-btn");
+
+        removeButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                let movieCard = this.parentElement;
+                movieCard.remove();
+            });
+        });
+    </script>
+
+</body>
+
+</html>

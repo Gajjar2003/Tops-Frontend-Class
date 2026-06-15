@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Zomato Food Order</h2>
+
+        <label for="cuisine">Select Cuisine:</label>
+        <select id="cuisine" onchange="showCuisine()">
+            <option value="">--Choose Cuisine--</option>
+            <option value="Indian">Indian</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Italian">Italian</option>
+            <option value="Mexican">Mexican</option>
+        </select>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" min="1" placeholder="Enter quantity">
+
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function showCuisine() {
+            let cuisine = document.getElementById("cuisine").value;
+            document.getElementById("message").textContent = "You selected: " + cuisine + " cuisine.";
+        }
+    </script>
+
+</body>
+
+</html>

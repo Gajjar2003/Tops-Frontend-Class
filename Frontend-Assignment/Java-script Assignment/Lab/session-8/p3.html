@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+      
+        let playlists = [
+            {
+                name: "Jenil",
+                creator: "Python",
+                numberOfSongs: 50
+            },
+            {
+                name: "meet",
+                creator: "OOP",
+                numberOfSongs: 30
+            },
+            {
+                name: "om",
+                creator: "Aarya",
+                numberOfSongs: 25
+            }
+        ];
+
+        
+        playlists.push({
+            name: "yug",
+            creator: "Django",
+            numberOfSongs: 35,
+            genre: "Rock"
+        });
+
+        console.log("After push:");
+        console.log(playlists);
+
+        playlists.pop();
+
+        console.log("After pop:");
+        console.log(playlists);
+
+
+    </script>
+</body>
+
+</html>

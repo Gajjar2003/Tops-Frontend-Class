@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let orders = [
+            { id: 1, clicks: 100 },
+            { id: 2, clicks: 250 },
+            { id: 3, clicks: 75 },
+            { id: 4, clicks: 180 }
+        ];
+
+
+        let totalClicks = orders.reduce((accumulator, order) => {
+            return accumulator + order.clicks;
+        }, 0);
+
+
+        console.log("Total Clicks:", totalClicks);
+    </script>
+</body>
+
+</html>

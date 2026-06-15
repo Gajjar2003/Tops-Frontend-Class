@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Favorite Songs</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        ul {
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+            padding: 10px;
+            margin: 8px 0;
+            background: #f1f1f1;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 5px;
+        }
+
+        button {
+            cursor: pointer;
+            color: white;
+            background: red;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3 style="text-align:center;">Favorite Songs</h3>
+
+    <ul id="songList">
+        <li>
+            Blinding Lights
+            <button class="remove">Remove</button>
+        </li>
+        <li>
+            Shape of You
+            <button class="remove">Remove</button>
+        </li>
+        <li>
+            Believer
+            <button class="remove">Remove</button>
+        </li>
+        <li>
+            Perfect
+            <button class="remove">Remove</button>
+        </li>
+    </ul>
+
+    <script>
+
+        let songList = document.getElementById("songList");
+
+
+        songList.addEventListener("click", function (event) {
+            if (event.target.classList.contains("remove")) {
+                const listItem = event.target.parentElement;
+                listItem.remove();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

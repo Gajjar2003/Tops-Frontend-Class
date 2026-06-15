@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        #addToCartBtn {
+            background-color: orange;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Flipkart Product</h2>
+
+    <button id="addToCartBtn">🛒 Add to Cart</button>
+
+    <p id="output">Interact with the button...</p>
+
+    <script>
+        let button = document.getElementById("addToCartBtn");
+        let output = document.getElementById("output");
+
+        function handleMouseEvent(event) {
+            console.log("Event Type:", event.type);
+            console.log("X Coordinate:", event.clientX);
+            console.log("Y Coordinate:", event.clientY);
+
+            output.innerHTML = `
+                Event: ${event.type}<br>
+                X: ${event.clientX}<br>
+                Y: ${event.clientY}
+            `;
+        }
+
+        button.addEventListener("click", handleMouseEvent);
+        button.addEventListener("mouseover", handleMouseEvent);
+        button.addEventListener("mouseout", handleMouseEvent);
+    </script>
+
+</body>
+</html>

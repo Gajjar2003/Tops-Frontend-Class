@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dynamic Cart UI</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        #cart {
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        .card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            margin: 8px 0;
+            background: #f2f2f2;
+            border-radius: 6px;
+        }
+
+        .remove {
+            cursor: pointer;
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        #addBtn {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Flipkart Cart (Dynamic)</h2>
+
+    <button id="addBtn">Add Random Product</button>
+
+    <div id="cart">
+
+        <div class="card">
+            <span>Phone - ₹20000</span>
+            <button class="remove">X</button>
+        </div>
+
+        <div class="card">
+            <span>Laptop - ₹50000</span>
+            <button class="remove">X</button>
+        </div>
+
+    </div>
+
+    <script>
+        const cart = document.getElementById("cart");
+        const addBtn = document.getElementById("addBtn");
+
+
+        const products = [
+            { name: "Shoes", price: 2000 },
+            { name: "Watch", price: 5000 },
+            { name: "Bag", price: 1500 },
+            { name: "Headphones", price: 3000 }
+        ];
+
+
+        addBtn.addEventListener("click", function () {
+            const randomProduct = products[
+                Math.floor(Math.random() * products.length)
+            ];
+
+            const card = document.createElement("div");
+            card.classList.add("card");
+
+            card.innerHTML = `
+        <span>${randomProduct.name} - ₹${randomProduct.price}</span>
+        <button class="remove">X</button>
+    `;
+
+            cart.appendChild(card);
+        });
+
+        cart.addEventListener("click", function (event) {
+            if (event.target.classList.contains("remove")) {
+                event.target.parentElement.remove();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

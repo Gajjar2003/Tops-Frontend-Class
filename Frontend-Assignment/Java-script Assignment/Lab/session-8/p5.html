@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let Cart = [
+            {
+                productName: "Samsung Galaxy M14",
+                price: 12000,
+                quantity: 1
+            },
+            {
+                productName: "Boat Headphones",
+                price: 1500,
+                quantity: 2
+            },
+            {
+                productName: "Wireless Mouse",
+                price: 800,
+                quantity: 3
+            },
+            {
+                productName: "Laptop Bag",
+                price: 1200,
+                quantity: 2
+            }
+        ]
+
+        for(let i = 0; i< Cart.length;i++){
+            let total = Cart[i].price * Cart[i].quantity;
+            
+            console.log( Cart[i].productName + " - Total Price: ₹" + total);
+            
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h2>My Wishlist</h2>
+
+    <ul id="wishlist"></ul>
+
+    <script>
+    
+        let products = [
+            {
+                name: "Samsung Galaxy M14",
+                price: 12999
+            },
+            {
+                name: "Boat Rockerz 450",
+                price: 1499
+            },
+            {
+                name: "HP Laptop",
+                price: 54999
+            }
+        ];
+
+    
+        localStorage.setItem(
+            "wishlist",
+            JSON.stringify(products)
+        );
+
+        let savedWishlist = JSON.parse(
+            localStorage.getItem("wishlist")
+        );
+
+       
+        let wishlistElement = document.getElementById("wishlist");
+
+        savedWishlist.forEach(function(product) {
+            let li = document.createElement("li");
+            li.textContent =
+                product.name + " - ₹" + product.price;
+            wishlistElement.appendChild(li);
+        });
+    </script>
+</body>
+</html>

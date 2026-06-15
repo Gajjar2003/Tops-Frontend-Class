@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function getChannelNames(jsonString) {
+
+            let channels = JSON.parse(jsonString);
+            return channels.map(channel => channel.name);
+        }
+
+
+        let jsonData = `[
+                { "name": "CodeWithHarry", "subscribers": "6M" },
+                { "name": "Apna College", "subscribers": "7M" },
+                { "name": "Traversy Media", "subscribers": "2M" }
+            ]`;
+
+      
+        let channelNames = getChannelNames(jsonData);
+
+        console.log(channelNames);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Order ID Generator</title>
+</head>
+
+<body>
+    <h2>Check Console for Order ID</h2>
+
+    <script type="module" src="order.js"></script>
+
+    <script>
+        import { generateOrderId } from "./utils.js";
+
+
+        const orderId = generateOrderId();
+
+
+        console.log("New Order ID:", orderId);
+    </script>
+</body>
+
+</html>

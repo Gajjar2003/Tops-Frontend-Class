@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const addToCartArrow = (...prices) => {
+            let total = 0;
+
+            for (let i = 0; i < prices.length; i++) {
+                total += prices[i];
+            }
+
+            return total;
+        };
+
+
+        console.log(addToCartArrow(100, 200, 300));
+        console.log(addToCartArrow(50, 150));
+    </script>
+</body>
+
+</html>

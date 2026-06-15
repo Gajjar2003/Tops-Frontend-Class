@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Docuiment</title>
+</head>
+
+<body>
+    <h2>My Top 3 Favorite Restaurants</h2>
+
+    <input type="text" id="restaurantInput" placeholder="Enter restaurant name">
+    <button onclick="addRestaurant()">Add Restaurant</button>
+
+    <ul id="restaurantList"></ul>
+
+    <script>
+        let restaurants = JSON.parse(localStorage.getItem("restaurants")) || [];
+
+
+        displayRestaurants();
+
+        function addRestaurant() {
+            let input = document.getElementById("restaurantInput");
+            let restaurantName = input.value.trim();
+
+            if (restaurantName === "") {
+                alert("Please enter a restaurant name!");
+                return;
+            }
+
+            if (restaurants.length >= 3) {
+                alert("You can only add your top 3 restaurants.");
+                return;
+            }
+
+            restaurants.push(restaurantName);
+
+
+            localStorage.setItem(
+                "restaurants",
+                JSON.stringify(restaurants)
+            );
+
+            displayRestaurants();
+            input.value = "";
+        }
+
+        function displayRestaurants() {
+            let list = document.getElementById("restaurantList");
+            list.innerHTML = "";
+
+            restaurants.forEach(function (restaurant) {
+                let li = document.createElement("li");
+                li.textContent = restaurant;
+                list.appendChild(li);
+            });
+        }
+    </script>
+</body>
+
+</html>

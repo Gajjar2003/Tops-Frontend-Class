@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Documnet</title>
+</head>
+<body>
+    <h2>Favorite Movies</h2>
+    <ul id="movieList"></ul>
+
+    <script>
+   
+        let movies = ["Jawan", "Pathaan", "Dunki"];
+
+        localStorage.setItem("movies", JSON.stringify(movies));
+
+        let saved = localStorage.getItem("movies");
+
+
+        let arr = JSON.parse(saved);
+
+
+        let movieList = document.getElementById("movieList");
+
+        arr.forEach(function(movie) {
+            let li = document.createElement("li");
+            li.textContent = movie;
+            movieList.appendChild(li);
+        });
+
+        console.log(arr);
+    </script>
+</body>
+</html>

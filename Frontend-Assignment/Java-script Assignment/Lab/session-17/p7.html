@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>YouTube Notifications</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        #feed {
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        .card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            margin: 8px 0;
+            background: #f2f2f2;
+            border-radius: 6px;
+            opacity: 1;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .card.fade-out {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .dismiss {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #addBtn {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>YouTube Notification Feed</h2>
+
+    <button id="addBtn">Add Notification</button>
+
+    <div id="feed">
+
+        <div class="card">
+            <span>New video from Tech Channel</span>
+            <button class="dismiss">Dismiss</button>
+        </div>
+
+        <div class="card">
+            <span>Your video got 1K views</span>
+            <button class="dismiss">Dismiss</button>
+        </div>
+
+    </div>
+
+    <script>
+        const feed = document.getElementById("feed");
+        const addBtn = document.getElementById("addBtn");
+
+        const notifications = [
+            "New subscriber on your channel",
+            "Live stream started",
+            "Comment on your video",
+            "Trending video alert"
+        ];
+
+
+        addBtn.addEventListener("click", function () {
+            const msg = notifications[
+                Math.floor(Math.random() * notifications.length)
+            ];
+
+            const card = document.createElement("div");
+            card.classList.add("card");
+
+            card.innerHTML = `
+        <span>${msg}</span>
+        <button class="dismiss">Dismiss</button>
+    `;
+
+            feed.appendChild(card);
+        });
+
+
+        feed.addEventListener("click", function (event) {
+            if (event.target.classList.contains("dismiss")) {
+                const card = event.target.parentElement;
+
+
+                card.classList.add("fade-out");
+
+
+                setTimeout(() => {
+                    card.remove();
+                }, 400);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

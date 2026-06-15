@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        .container {
+            max-width: 300px;
+            margin: 20px auto;
+        }
+
+        .card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 8px 0;
+            background: #f2f2f2;
+            border-radius: 6px;
+        }
+
+        .remove {
+            cursor: pointer;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="songContainer"></div>
+
+    <script>
+
+        let songs = [
+            "Blinding Lights",
+            "Shape of You",
+            "Perfect",
+            "Believer"
+        ];
+
+        let container = document.getElementById("songContainer");
+
+
+        songs.forEach(song => {
+            let card = document.createElement("div");
+            card.classList.add("card");
+
+            card.innerHTML = `
+        <span>${song}</span>
+        <span class="remove">X</span>
+    `;
+
+            container.appendChild(card);
+        });
+
+        container.addEventListener("click", function (event) {
+            if (event.target.classList.contains("remove")) {
+                let card = event.target.parentElement;
+                card.remove();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

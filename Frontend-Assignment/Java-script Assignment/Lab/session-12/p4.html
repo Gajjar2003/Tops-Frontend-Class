@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h2>Open the Console to See the Response</h2>
+
+    <script>
+        function addNewPlaylist() {
+            const playlist = {
+                name: "Workout Hits",
+                description: "High-energy songs for workouts"
+            };
+
+            fetch("https://jsonplaceholder.typicode.com/posts", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(playlist)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Playlist Added:");
+                console.log(data);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        }
+
+      
+        addNewPlaylist();
+    </script>
+</body>
+</html>

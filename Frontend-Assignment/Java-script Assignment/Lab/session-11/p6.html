@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const products = [
+            { name: "Samsung Galaxy M14", price: 12999 },
+            { name: "Samsung Smart TV", price: 29999 },
+            { name: "Boat Headphones", price: 1499 },
+            { name: "HP Laptop", price: 54999 }
+        ];
+
+
+        function searchProductsCallback(searchTerm, callback) {
+            setTimeout(() => {
+                const results = products.filter(product =>
+                    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+
+                callback(results);
+            }, 1000);
+        }
+
+        searchProductsCallback("Samsung", (results) => {
+            console.log("Callback Results:");
+            console.log(results);
+        });
+
+
+
+        function searchProductsPromise(searchTerm) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    const results = products.filter(product =>
+                        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+                    );
+
+                    resolve(results);
+                }, 1000);
+            });
+        }
+
+        searchProductsPromise("Samsung")
+            .then((results) => {
+                console.log("Promise Results:");
+                console.log(results);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    </script>
+</body>
+
+</html>

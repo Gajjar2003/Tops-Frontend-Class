@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        class Playlist {
+            constructor(name, songs) {
+                this.name = name;
+                this.songs = songs;
+            }
+
+
+            addSong(songName) {
+                this.songs.push(songName);
+            }
+
+
+            displayPlaylist() {
+                console.log(`Playlist: ${this.name}`);
+                console.log("Songs:");
+
+                this.songs.forEach((song, index) => {
+                    console.log(`${index + 1}. ${song}`);
+                });
+            }
+        }
+
+
+        let myPlaylist = new Playlist("Chill Vibes", [
+            "Let Her Go",
+            "Perfect"
+        ]);
+
+
+        myPlaylist.addSong("Blinding Lights");
+        myPlaylist.addSong("Someone Like You");
+
+
+        myPlaylist.displayPlaylist();
+    </script>
+</body>
+
+</html>

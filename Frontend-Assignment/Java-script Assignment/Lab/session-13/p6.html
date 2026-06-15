@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function getOrderTotal(items) {
+            let total = 0;
+
+            for (let i = 0; i < items.length; i++) {
+                if (items[i].price < 0) {
+                    throw new Error("Invalid item price");
+                }
+                total += items[i].price;
+            }
+
+            return total;
+        }
+
+
+        const orderItems = [
+            { name: "Pizza", price: 250 },
+            { name: "Burger", price: 150 },
+            { name: "Pasta", price: 200 }
+        ];
+
+
+        try {
+            let total = getOrderTotal(orderItems);
+            console.log("Total Bill:", total);
+        } catch (error) {
+            console.log("Error:", error.message);
+        }
+    </script>
+</body>
+
+</html>

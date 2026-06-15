@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>My Favorite Restaurants</h2>
+
+    <input type="text" id="restaurantInput" placeholder="Enter restaurant name">
+    <button onclick="addRestaurant()">Add Restaurant</button>
+    <button onclick="clearFavorites()">Clear Favorites</button>
+
+    <ul id="restaurantList"></ul>
+
+    <script>
+        let restaurants = JSON.parse(localStorage.getItem("restaurants")) || [];
+
+     
+        displayRestaurants();
+
+        function addRestaurant() {
+            let input = document.getElementById("restaurantInput");
+            let restaurantName = input.value.trim();
+
+            if (restaurantName === "") {
+                alert("Please enter a restaurant name!");
+                return;
+            }
+
+            restaurants.push(restaurantName);
+
+            localStorage.setItem(
+                "restaurants",
+                JSON.stringify(restaurants)
+            );
+
+            displayRestaurants();
+            input.value = "";
+        }
+
+        function displayRestaurants() {
+            let list = document.getElementById("restaurantList");
+            list.innerHTML = "";
+
+            restaurants.forEach(function (restaurant) {
+                let li = document.createElement("li");
+                li.textContent = restaurant;
+                list.appendChild(li);
+            });
+        }
+
+        function clearFavorites() {
+         
+            localStorage.removeItem("restaurants");
+
+   
+            restaurants = [];
+
+
+            displayRestaurants();
+        }
+    </script>
+</body>
+
+</html>

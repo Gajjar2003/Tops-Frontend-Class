@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let playlists = [
+            { name: "Chill Vibes", isPublic: true },
+            { name: "Workout Hits", isPublic: false },
+            { name: "Top 50", isPublic: true },
+            { name: "Private Mix", isPublic: false }
+        ];
+
+
+        let publicPlaylists = playlists.filter(playlist => playlist.isPublic);
+
+
+        console.log("Public Playlists:", publicPlaylists);
+    </script>
+</body>
+
+</html>

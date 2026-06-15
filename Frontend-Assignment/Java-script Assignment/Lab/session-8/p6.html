@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let playlist = [
+            {
+                name : "Jenil",
+                creator : "Python",
+                numberOfSong : 25
+            },
+
+              {
+                name : "meet",
+                creator : "Aarya",
+                numberOfSong : 50
+            },
+
+              {
+                name : "yug",
+                creator : "object",
+                numberOfSong : 52
+            },
+
+        ]
+
+        playlist.splice(1,1,{
+            name : "Vraj",
+            creator  : "OOP",
+            numberOfSong : 100
+
+        })
+
+        console.log(playlist)
+    </script>
+</body>
+</html>

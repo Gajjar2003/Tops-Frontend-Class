@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="message">Welcome!</h2>
+
+    <script>
+
+        setTimeout(() => {
+            document.getElementById("message").textContent ="Loading your feed...";
+
+        
+            setTimeout(() => {
+                document.getElementById("message").textContent ="Feed loaded!";}, 2000);
+            }, 2000);
+    </script>
+</body>
+
+</html>

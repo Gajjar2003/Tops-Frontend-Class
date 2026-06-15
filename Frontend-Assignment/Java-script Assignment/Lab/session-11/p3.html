@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function fetchSongLyrics(song, callback) {
+            setTimeout(() => {
+                const lyrics = `Lyrics for "${song}": La la la... This is a sample lyrics line.`;
+                callback(lyrics);
+            }, 2000);
+        }
+
+
+        fetchSongLyrics("Shape of You", (lyrics) => {
+            console.log(lyrics);
+        });
+    </script>
+</body>
+
+</html>

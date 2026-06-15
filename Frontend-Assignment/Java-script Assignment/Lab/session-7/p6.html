@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        #cart {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Product: Pizza</h2>
+    <button id="addCartBtn">Add to Cart</button>
+
+    <div id="cart">
+        <h3>Cart</h3>
+        <ul id="cartItems"></ul>
+    </div>
+
+    <script>
+        let productName = "Pizza";
+
+        function addToCart() {
+            let li = document.createElement("li");
+            li.textContent = productName;
+
+            document.getElementById("cartItems").appendChild(li);
+        }
+
+        let button = document.querySelector("#addCartBtn");
+
+        button.addEventListener("click", addToCart);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #clickArea {
+            width: 500px;
+            height: 300px;
+            border: 2px solid black;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #output {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Click Inside the Box</h2>
+
+    <div id="clickArea">
+        Click anywhere inside this box
+    </div>
+
+    <p id="output">X: 0, Y: 0</p>
+
+    <script>
+        let clickArea = document.getElementById("clickArea");
+        let output = document.getElementById("output");
+
+        clickArea.addEventListener("click", function (event) {
+            let x = event.clientX;
+            let y = event.clientY;
+
+            output.textContent = `X: ${x}, Y: ${y}`;
+        });
+    </script>
+
+</body>
+</html>

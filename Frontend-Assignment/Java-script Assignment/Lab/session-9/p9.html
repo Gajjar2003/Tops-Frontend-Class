@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h2>My Wishlist</h2>
+
+    <ul id="wishlist"></ul>
+
+    <button id="clearBtn">Clear Wishlist</button>
+
+    <script>
+      
+        let products = [
+            {
+                name: "Samsung Galaxy M14",
+                price: 12999
+            },
+            {
+                name: "Boat Rockerz 450",
+                price: 1499
+            },
+            {
+                name: "HP Laptop",
+                price: 54999
+            }
+        ];
+
+      
+        if (!localStorage.getItem("wishlist")) {
+            localStorage.setItem(
+                "wishlist",
+                JSON.stringify(products)
+            );
+        }
+
+
+        function displayWishlist() {
+            let wishlistElement = document.getElementById("wishlist");
+            wishlistElement.innerHTML = "";
+
+            let savedWishlist = JSON.parse(
+                localStorage.getItem("wishlist")
+            ) || [];
+
+            savedWishlist.forEach(function(product) {
+                let li = document.createElement("li");
+                li.textContent =
+                    product.name + " - ₹" + product.price;
+                wishlistElement.appendChild(li);
+            });
+        }
+
+
+        function clearWishlist() {
+
+            localStorage.removeItem("wishlist");
+
+
+            document.getElementById("wishlist").innerHTML =
+                "<li>Wishlist is empty.</li>";
+        }
+
+
+        document
+            .getElementById("clearBtn")
+            .addEventListener("click", clearWishlist);
+
+
+        displayWishlist();
+    </script>
+</body>
+</html>
