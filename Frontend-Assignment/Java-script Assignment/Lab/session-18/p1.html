@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>Instagram Post Upload Simulation</h2>
+    <button id="uploadBtn">Upload Post</button>
+
+    <script>
+        document.getElementById("uploadBtn").addEventListener("click", function () {
+
+
+            let caption = "";
+            let imageUploaded = false;
+
+
+            if (imageUploaded) {
+                console.log("✅ Post uploaded successfully!");
+            } else {
+                console.error("❌ Error: Image failed to upload.");
+            }
+
+
+            if (caption.trim() === "") {
+                console.warn("⚠️ Warning: Caption is missing.");
+            }
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function addToCart(productName, quantity) {
+            if (quantity > 0) {
+                console.log(`✅ ${quantity} ${productName}(s) added to cart successfully.`);
+            } else if (quantity === 0) {
+                console.warn(`⚠️ Warning: Quantity for ${productName} is zero.`);
+            } else {
+                console.error(`❌ Error: Invalid quantity (${quantity}) for ${productName}.`);
+            }
+        }
+
+
+        addToCart("Laptop", 2);
+
+
+        addToCart("Mobile Phone", 0);
+
+
+        addToCart("Headphones", -1);
+    </script>
+</body>
+
+</html>
