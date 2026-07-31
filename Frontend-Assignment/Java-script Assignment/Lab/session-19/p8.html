@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Manager</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 40px;
+        }
+
+        .container {
+            width: 500px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px #ccc;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e23744;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 9px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #e23744;
+            font-size: 16px;
+        }
+
+        .edit-btn {
+            background: #007bff;
+            margin-right: 5px;
+        }
+
+        .delete-btn {
+            background: #dc3545;
+        }
+
+        .restaurant {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .restaurant h3 {
+            margin: 0 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🍽️ Restaurant Manager</h1>
+
+    <form id="restaurantForm">
+
+        <label>Restaurant Name</label>
+        <input
+            type="text"
+            id="restaurantName"
+            placeholder="Enter restaurant name"
+            required
+        >
+
+        <label>Cuisine</label>
+        <input
+            type="text"
+            id="cuisine"
+            placeholder="Enter cuisine"
+            required
+        >
+
+        <label>Rating</label>
+        <input
+            type="number"
+            id="rating"
+            min="1"
+            max="5"
+            step="0.1"
+            placeholder="Enter rating"
+            required
+        >
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+            Add Restaurant
+        </button>
+
+    </form>
+
+    <div id="restaurantList"></div>
+
+</div>
+
+
+<script>
+
+
+    let restaurants = [];
+
+  
+    let editId = null;
+
+
+    const form = document.getElementById("restaurantForm");
+    const restaurantList = document.getElementById("restaurantList");
+
+    const nameInput = document.getElementById("restaurantName");
+    const cuisineInput = document.getElementById("cuisine");
+    const ratingInput = document.getElementById("rating");
+    const submitBtn = document.getElementById("submitBtn");
+
+
+   
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const name = nameInput.value;
+        const cuisine = cuisineInput.value;
+        const rating = Number(ratingInput.value);
+
+
+  
+        if (editId !== null) {
+
+            const restaurant = restaurants.find(function(item) {
+                return item.id === editId;
+            });
+
+            if (restaurant) {
+
+           
+                restaurant.name = name;
+                restaurant.cuisine = cuisine;
+                restaurant.rating = rating;
+            }
+
+    
+            editId = null;
+
+        
+            submitBtn.textContent = "Add Restaurant";
+
+        }
+
+    
+        else {
+
+            const restaurant = {
+                id: Date.now(),
+                name: name,
+                cuisine: cuisine,
+                rating: rating
+            };
+
+            restaurants.push(restaurant);
+        }
+
+
+      
+        displayRestaurants();
+
+
+        form.reset();
+    });
+
+
+  
+    function displayRestaurants() {
+
+        restaurantList.innerHTML = "";
+
+        restaurants.forEach(function(restaurant) {
+
+            const div = document.createElement("div");
+
+            div.className = "restaurant";
+
+            div.innerHTML = `
+                <h3>${restaurant.name}</h3>
+
+                <p>
+                    <strong>Cuisine:</strong>
+                    ${restaurant.cuisine}
+                </p>
+
+                <p>
+                    <strong>Rating:</strong>
+                    ⭐ ${restaurant.rating}
+                </p>
+
+                <button
+                    class="edit-btn"
+                    onclick="editRestaurant(${restaurant.id})">
+                    Edit
+                </button>
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteRestaurant(${restaurant.id})">
+                    Delete
+                </button>
+            `;
+
+            restaurantList.appendChild(div);
+        });
+    }
+
+
+   
+    function editRestaurant(id) {
+
+        const restaurant = restaurants.find(function(item) {
+            return item.id === id;
+        });
+
+        if (!restaurant) {
+            return;
+        }
+
+
+
+        nameInput.value = restaurant.name;
+        cuisineInput.value = restaurant.cuisine;
+        ratingInput.value = restaurant.rating;
+
+
+   
+        editId = id;
+
+
+ 
+        submitBtn.textContent = "Update Restaurant";
+
+
+    
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
+
+    function deleteRestaurant(id) {
+
+        const index = restaurants.findIndex(function(item) {
+            return item.id === id;
+        });
+
+        if (index !== -1) {
+
+      
+            restaurants.splice(index, 1);
+
+        
+            displayRestaurants();
+        }
+    }
+
+
+
+    displayRestaurants();
+
+</script>
+
+</body>
+</html>
+

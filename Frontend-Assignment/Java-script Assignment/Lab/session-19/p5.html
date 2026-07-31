@@ -1,0 +1,280 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist Manager</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            padding: 40px;
+        }
+
+        .container {
+            width: 450px;
+            margin: auto;
+            background-color: #242424;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        .add-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #1db954;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .playlist {
+            background-color: #333;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .playlist h3 {
+            margin: 0 0 8px;
+        }
+
+        .playlist p {
+            color: #bbb;
+        }
+
+        .edit-btn,
+        .delete-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            margin-right: 8px;
+        }
+
+        .edit-btn {
+            background-color: #007bff;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>My Playlists</h1>
+
+    <form id="playlistForm">
+
+        <label>Playlist Name</label>
+
+        <input
+            type="text"
+            id="playlistName"
+            placeholder="Enter playlist name"
+            required
+        >
+
+        <label>Description</label>
+
+        <textarea
+            id="playlistDescription"
+            placeholder="Enter description"
+        ></textarea>
+
+        <button class="add-btn" type="submit">
+            Add Playlist
+        </button>
+
+    </form>
+
+
+    <!-- Playlist list -->
+    <div id="playlistList"></div>
+
+</div>
+
+
+<script>
+
+  
+    let playlists = [];
+
+
+
+    const form = document.getElementById("playlistForm");
+    const playlistList = document.getElementById("playlistList");
+
+
+
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const name = document.getElementById("playlistName").value;
+        const description =
+            document.getElementById("playlistDescription").value;
+
+
+        const playlist = {
+            id: Date.now(),
+            name: name,
+            description: description
+        };
+
+
+
+        playlists.push(playlist);
+
+
+  
+        displayPlaylists();
+
+
+   
+        form.reset();
+
+    });
+
+
+   
+    function displayPlaylists() {
+
+        playlistList.innerHTML = "";
+
+
+        playlists.forEach(function(playlist) {
+
+            const div = document.createElement("div");
+
+            div.className = "playlist";
+
+            div.innerHTML = `
+                <h3>${playlist.name}</h3>
+
+                <p>${playlist.description}</p>
+
+                <button
+                    class="edit-btn"
+                    onclick="editPlaylist(${playlist.id})">
+                    Edit
+                </button>
+
+                <button
+                    class="delete-btn"
+                    onclick="deletePlaylist(${playlist.id})">
+                    Delete
+                </button>
+            `;
+
+
+            playlistList.appendChild(div);
+
+        });
+
+    }
+
+
+    function editPlaylist(id) {
+
+      
+        const playlist = playlists.find(function(item) {
+            return item.id === id;
+        });
+
+
+        if (!playlist) {
+            return;
+        }
+
+
+      
+        const newName = prompt(
+            "Enter new playlist name:",
+            playlist.name
+        );
+
+
+        if (newName === null) {
+            return;
+        }
+
+
+        const newDescription = prompt(
+            "Enter new description:",
+            playlist.description
+        );
+
+
+        if (newDescription === null) {
+            return;
+        }
+
+
+        playlist.name = newName;
+        playlist.description = newDescription;
+
+
+      
+        displayPlaylists();
+
+    }
+
+
+   
+    function deletePlaylist(id) {
+
+        const confirmDelete = confirm(
+            "Are you sure you want to delete this playlist?"
+        );
+
+
+        if (!confirmDelete) {
+            return;
+        }
+
+
+      
+        playlists = playlists.filter(function(playlist) {
+            return playlist.id !== id;
+        });
+
+
+    
+        displayPlaylists();
+
+    }
+
+</script>
+
+</body>
+</html>
+

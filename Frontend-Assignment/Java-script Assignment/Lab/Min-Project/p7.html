@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Playlist URL Validator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 50px;
+        }
+
+        .container {
+            width: 450px;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error {
+            color: red;
+            margin-top: 8px;
+        }
+
+        .success {
+            color: green;
+            margin-top: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background-color: #1db954;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #1ed760;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>🎵 Add Playlist</h2>
+
+        <form id="playlistForm">
+
+            <label for="playlistURL">
+                Playlist URL
+            </label>
+
+            <input
+                type="text"
+                id="playlistURL"
+                placeholder="https://open.spotify.com/..."
+            >
+
+            <!-- Error appears here -->
+            <p id="urlError" class="error"></p>
+
+            <button type="submit">
+                Add Playlist
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <script>
+
+
+        function validateLink(url) {
+
+
+            const hasHttps =
+                url.startsWith("https://");
+
+     
+            const hasValidWebsite =
+                url.includes("spotify.com") ||
+                url.includes("youtube.com");
+
+
+        
+            return hasHttps && hasValidWebsite;
+        }
+
+
+
+        const form =
+            document.getElementById("playlistForm");
+
+
+        const playlistURL =
+            document.getElementById("playlistURL");
+
+
+        const urlError =
+            document.getElementById("urlError");
+
+
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            const url =
+                playlistURL.value.trim();
+
+
+        
+            urlError.textContent = "";
+
+
+       
+            if (!validateLink(url)) {
+
+                urlError.textContent =
+                    "❌ Invalid URL. Use a Spotify or YouTube URL starting with https://";
+
+                return;
+            }
+
+
+            
+            urlError.textContent =
+                "✅ Valid playlist URL";
+
+            urlError.className = "success";
+
+        });
+
+    </script>
+
+</body>
+
+</html>

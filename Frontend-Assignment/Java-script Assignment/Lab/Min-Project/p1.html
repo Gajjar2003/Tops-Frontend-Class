@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Music Playlist Links</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            width: 450px;
+            margin: auto;
+            background-color: #242424;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1db954;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1ed760;
+        }
+
+        .playlist {
+            background-color: #333333;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+
+        .playlist h3 {
+            margin: 0 0 8px;
+        }
+
+        .playlist a {
+            color: #1db954;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .playlist a:hover {
+            text-decoration: underline;
+        }
+
+        .delete-btn {
+            background-color: #e22134;
+            margin-top: 10px;
+            width: auto;
+            padding: 8px 15px;
+        }
+
+        .delete-btn:hover {
+            background-color: #c91d2e;
+        }
+
+        .error {
+            color: #ff4d4d;
+            margin-bottom: 15px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <h1>🎵 Music Playlists</h1>
+
+
+        <!-- Playlist Form -->
+
+        <form id="playlistForm">
+
+            <label for="playlistName">
+                Playlist Name
+            </label>
+
+            <input
+                type="text"
+                id="playlistName"
+                placeholder="Enter playlist name"
+            >
+
+
+            <label for="platform">
+                Platform
+            </label>
+
+            <select id="platform">
+
+                <option value="Spotify">
+                    Spotify
+                </option>
+
+                <option value="YouTube Music">
+                    YouTube Music
+                </option>
+
+            </select>
+
+
+            <label for="playlistUrl">
+                Playlist URL
+            </label>
+
+            <input
+                type="url"
+                id="playlistUrl"
+                placeholder="https://..."
+            >
+
+
+            <p id="error" class="error"></p>
+
+
+            <button type="submit">
+                Add Playlist
+            </button>
+
+        </form>
+
+
+        <!-- Playlist Display -->
+
+        <div id="playlistList"></div>
+
+    </div>
+
+
+    <script>
+
+    
+        let socialLinks =
+            JSON.parse(localStorage.getItem("myLinks")) || [];
+
+
+        const form =
+            document.getElementById("playlistForm");
+
+        const playlistList =
+            document.getElementById("playlistList");
+
+        const error =
+            document.getElementById("error");
+
+
+
+        function addPlaylistLink(linkObj) {
+
+         
+            if (
+                !linkObj ||
+                !linkObj.name ||
+                !linkObj.url
+            ) {
+                return false;
+            }
+
+
+     
+            linkObj.id = Date.now();
+
+
+      
+            socialLinks.push(linkObj);
+
+
+         
+            localStorage.setItem(
+                "myLinks",
+                JSON.stringify(socialLinks)
+            );
+
+
+            return true;
+        }
+
+
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById("playlistName").value.trim();
+
+            const platform =
+                document.getElementById("platform").value;
+
+            const url =
+                document.getElementById("playlistUrl").value.trim();
+
+
+            error.textContent = "";
+
+
+         
+            if (name === "") {
+
+                error.textContent =
+                    "Please enter a playlist name.";
+
+                return;
+            }
+
+
+            if (url === "") {
+
+                error.textContent =
+                    "Please enter a playlist URL.";
+
+                return;
+            }
+
+
+            const playlist = {
+
+                name: name,
+
+                platform: platform,
+
+                url: url
+
+            };
+
+
+    
+            const added =
+                addPlaylistLink(playlist);
+
+
+            if (added) {
+
+               
+                displayPlaylists();
+
+
+            
+                form.reset();
+
+            }
+
+        });
+
+
+      
+        function displayPlaylists() {
+
+            playlistList.innerHTML = "";
+
+
+            if (socialLinks.length === 0) {
+
+                playlistList.innerHTML =
+                    "<p>No playlists added yet.</p>";
+
+                return;
+            }
+
+
+            socialLinks.forEach(function(link) {
+
+                const div =
+                    document.createElement("div");
+
+                div.className = "playlist";
+
+
+                div.innerHTML = `
+
+                    <h3>
+                        ${link.name}
+                    </h3>
+
+                    <p>
+                        Platform: ${link.platform}
+                    </p>
+
+                    <a
+                        href="${link.url}"
+                        target="_blank"
+                    >
+                        ${link.url}
+                    </a>
+
+                    <br>
+
+                    <button
+                        class="delete-btn"
+                        onclick="deletePlaylist(${link.id})"
+                    >
+                        Delete
+                    </button>
+
+                `;
+
+
+                playlistList.appendChild(div);
+
+            });
+
+        }
+
+
+        function deletePlaylist(id) {
+
+            socialLinks =
+                socialLinks.filter(function(link) {
+
+                    return link.id !== id;
+
+                });
+
+
+       
+            localStorage.setItem(
+                "myLinks",
+                JSON.stringify(socialLinks)
+            );
+
+
+    
+            displayPlaylists();
+
+        }
+
+
+        displayPlaylists();
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Manager</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            width: 500px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #e23744;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .add-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #e23744;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .restaurant {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+
+        .restaurant h3 {
+            margin: 0 0 8px;
+        }
+
+        .restaurant p {
+            margin: 6px 0;
+            color: #555;
+        }
+
+        .edit-btn,
+        .delete-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            margin-right: 8px;
+            margin-top: 10px;
+        }
+
+        .edit-btn {
+            background-color: #007bff;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🍽️ Restaurant Manager</h1>
+
+    <!-- Add Restaurant Form -->
+    <form id="restaurantForm">
+
+        <label>Restaurant Name</label>
+
+        <input
+            type="text"
+            id="restaurantName"
+            placeholder="Enter restaurant name"
+            required
+        >
+
+        <label>Cuisine</label>
+
+        <input
+            type="text"
+            id="cuisine"
+            placeholder="e.g. Indian, Chinese, Italian"
+            required
+        >
+
+        <label>Rating</label>
+
+        <input
+            type="number"
+            id="rating"
+            placeholder="Enter rating (1-5)"
+            min="1"
+            max="5"
+            step="0.1"
+            required
+        >
+
+        <button class="add-btn" type="submit">
+            Add Restaurant
+        </button>
+
+    </form>
+
+
+    <!-- Restaurant List -->
+    <div id="restaurantList"></div>
+
+</div>
+
+
+<script>
+
+
+    let restaurants = [];
+
+
+
+    const form = document.getElementById("restaurantForm");
+    const restaurantList = document.getElementById("restaurantList");
+
+
+
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const name = document.getElementById("restaurantName").value;
+        const cuisine = document.getElementById("cuisine").value;
+        const rating = document.getElementById("rating").value;
+
+
+
+        const restaurant = {
+            id: Date.now(),
+            name: name,
+            cuisine: cuisine,
+            rating: Number(rating)
+        };
+
+
+
+        restaurants.push(restaurant);
+
+
+        displayRestaurants();
+
+
+
+        form.reset();
+
+    });
+
+
+
+    function displayRestaurants() {
+
+     
+        restaurantList.innerHTML = "";
+
+
+   
+        restaurants.forEach(function(restaurant) {
+
+            const div = document.createElement("div");
+
+            div.className = "restaurant";
+
+
+            div.innerHTML = `
+                <h3>${restaurant.name}</h3>
+
+                <p>
+                    <strong>Cuisine:</strong>
+                    ${restaurant.cuisine}
+                </p>
+
+                <p>
+                    <strong>Rating:</strong>
+                    ⭐ ${restaurant.rating}
+                </p>
+
+                <button
+                    class="edit-btn"
+                    onclick="editRestaurant(${restaurant.id})">
+                    Edit
+                </button>
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteRestaurant(${restaurant.id})">
+                    Delete
+                </button>
+            `;
+
+
+            restaurantList.appendChild(div);
+
+        });
+
+    }
+
+
+
+    function editRestaurant(id) {
+
+        const restaurant = restaurants.find(function(item) {
+            return item.id === id;
+        });
+
+
+        if (!restaurant) {
+            return;
+        }
+
+
+
+        const newName = prompt(
+            "Enter restaurant name:",
+            restaurant.name
+        );
+
+        if (newName === null) {
+            return;
+        }
+
+
+        const newCuisine = prompt(
+            "Enter cuisine:",
+            restaurant.cuisine
+        );
+
+        if (newCuisine === null) {
+            return;
+        }
+
+
+        const newRating = prompt(
+            "Enter rating (1-5):",
+            restaurant.rating
+        );
+
+        if (newRating === null) {
+            return;
+        }
+
+
+  
+        restaurant.name = newName;
+        restaurant.cuisine = newCuisine;
+        restaurant.rating = Number(newRating);
+
+
+        // Refresh display
+        displayRestaurants();
+
+    }
+
+
+
+    function deleteRestaurant(id) {
+
+        const confirmDelete = confirm(
+            "Are you sure you want to delete this restaurant?"
+        );
+
+
+        if (!confirmDelete) {
+            return;
+        }
+
+
+    
+        restaurants = restaurants.filter(function(restaurant) {
+            return restaurant.id !== id;
+        });
+
+
+    
+        displayRestaurants();
+
+    }
+
+</script>
+
+</body>
+</html>
+

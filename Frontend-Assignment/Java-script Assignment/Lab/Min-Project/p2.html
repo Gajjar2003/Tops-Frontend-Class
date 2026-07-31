@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>URL Validator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 50px;
+        }
+
+        .container {
+            width: 400px;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            margin: 15px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>URL Validator</h2>
+
+        <input
+            type="text"
+            id="urlInput"
+            placeholder="Enter URL"
+        >
+
+        <button onclick="checkURL()">
+            Validate URL
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+
+    <script>
+
+        function validateURL(url) {
+
+          
+         
+            if (
+                url.startsWith("https://") &&
+                url.includes(".")
+            ) {
+                return true;
+            }
+
+            return false;
+        }
+
+
+
+        function checkURL() {
+
+            const url =
+                document.getElementById("urlInput").value.trim();
+
+            const result =
+                document.getElementById("result");
+
+
+            if (validateURL(url)) {
+
+                result.textContent = "✅ Valid URL";
+                result.style.color = "green";
+
+            } else {
+
+                result.textContent = "❌ Invalid URL";
+                result.style.color = "red";
+
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
+

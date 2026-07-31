@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist Manager</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: white;
+            padding: 40px;
+        }
+
+        .container {
+            width: 400px;
+            margin: auto;
+            background: #242424;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: none;
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #1db954;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .playlist {
+            background: #333;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .playlist h3 {
+            margin: 0 0 8px;
+        }
+
+        .playlist p {
+            margin: 0;
+            color: #bbb;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Create Playlist</h2>
+
+    <form id="playlistForm">
+
+        <label>Playlist Name</label>
+        <input
+            type="text"
+            id="playlistName"
+            placeholder="Enter playlist name"
+            required
+        >
+
+        <label>Description</label>
+        <textarea
+            id="playlistDescription"
+            placeholder="Enter playlist description"
+        ></textarea>
+
+        <button type="submit">Create Playlist</button>
+
+    </form>
+
+    <!-- Playlists will appear here -->
+    <div id="playlistList"></div>
+
+</div>
+
+
+<script>
+
+    // Store all playlists
+    let playlists = [];
+
+
+    // Get HTML elements
+    const form = document.getElementById("playlistForm");
+    const playlistList = document.getElementById("playlistList");
+
+
+    // Form submit event
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        // Get input values
+        let name = document.getElementById("playlistName").value;
+        let description = document.getElementById("playlistDescription").value;
+
+
+        // Create playlist object
+        let playlist = {
+            name: name,
+            description: description
+        };
+
+
+        // Add playlist to array
+        playlists.push(playlist);
+
+
+        // Update display
+        displayPlaylists();
+
+
+        // Clear form
+        form.reset();
+
+    });
+
+
+    // Display all playlists
+    function displayPlaylists() {
+
+        // Clear old display
+        playlistList.innerHTML = "";
+
+
+        // Loop through playlists
+        playlists.forEach(function(playlist) {
+
+            let div = document.createElement("div");
+
+            div.className = "playlist";
+
+            div.innerHTML = `
+                <h3>${playlist.name}</h3>
+                <p>${playlist.description}</p>
+            `;
+
+            playlistList.appendChild(div);
+
+        });
+
+    }
+
+</script>
+
+</body>
+</html>

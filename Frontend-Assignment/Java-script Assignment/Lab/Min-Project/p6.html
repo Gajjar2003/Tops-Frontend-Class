@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Instagram URL Validator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 50px;
+        }
+
+        .container {
+            width: 400px;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background-color: #e1306c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #c62a5d;
+        }
+
+        .error {
+            color: red;
+            margin-top: 8px;
+        }
+
+        .success {
+            color: green;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Instagram Profile</h2>
+
+        <form id="instagramForm">
+
+            <label for="instagramURL">
+                Instagram Profile URL
+            </label>
+
+            <input
+                type="text"
+                id="instagramURL"
+                placeholder="https://www.instagram.com/username"
+            >
+
+       
+            <p id="instagramError" class="error"></p>
+
+            <button type="submit">
+                Add Profile
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <script>
+
+  
+        function validateInstagramURL(url) {
+
+            const error =
+                document.getElementById("instagramError");
+
+
+            if (
+                !url.startsWith(
+                    "https://www.instagram.com/"
+                )
+            ) {
+
+                error.textContent =
+                    "Please enter a valid Instagram profile URL.";
+
+                return false;
+            }
+
+
+     
+            error.textContent = "";
+
+            return true;
+        }
+
+
+
+        const form =
+            document.getElementById("instagramForm");
+
+
+
+        form.addEventListener("submit", function(event) {
+
+
+            const url =
+                document
+                .getElementById("instagramURL")
+                .value
+                .trim();
+
+
+
+            const isValid =
+                validateInstagramURL(url);
+
+
+      
+            if (!isValid) {
+
+                event.preventDefault();
+
+                return;
+            }
+
+
+
+            event.preventDefault();
+
+            alert("Instagram profile added successfully!");
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+
